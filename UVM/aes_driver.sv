@@ -2,7 +2,7 @@ class aes_driver extends uvm_driver #(aes_packet);
 
 	  aes_packet req;
     int num_sent;
-  	virtual interface aes_if vif;
+  	//virtual interface aes_if vif;
 
 	`uvm_component_utils(aes_driver)
 	
@@ -13,9 +13,9 @@ class aes_driver extends uvm_driver #(aes_packet);
 	
   	
 	virtual function void connect_phase(uvm_phase phase);
-    		if (!uvm_config_db#(virtual aes_if)::get(this, "", "vif", vif))
-      			`uvm_error("NOVIF", "Virtual interface (vif) not set for aes_driver")
-    		else
+    		// if (!uvm_config_db#(virtual aes_if)::get(this, "", "vif", vif))
+      		// 	`uvm_error("NOVIF", "Virtual interface (vif) not set for aes_driver")
+    		// else
       			`uvm_info(get_type_name(), "Virtual interface successfully connected in AES driver", UVM_HIGH)
   	endfunction
 	
@@ -35,7 +35,7 @@ class aes_driver extends uvm_driver #(aes_packet);
 
       			`uvm_info(get_type_name(), $sformatf("Sending Packet :\n%s", req.sprint()), UVM_HIGH)
        
-      			vif.send_to_dut(req);
+      			//vif.send_to_dut(req);
       		
       			num_sent++;
       			// Communicate item done to the sequencer

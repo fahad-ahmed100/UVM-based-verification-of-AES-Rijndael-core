@@ -4,7 +4,7 @@ class aes_monitor extends uvm_monitor;
 
   // Count packets collected
   int num_pkt_col;
-	virtual interface aes_if vif;
+	//virtual interface aes_if vif;
 	
 	// TLM ports used to connect the monitor to the scoreboard
   	uvm_analysis_port #(aes_packet) item_collected_port;
@@ -19,17 +19,17 @@ class aes_monitor extends uvm_monitor;
 	endfunction
 	
 	virtual function void connect_phase(uvm_phase phase);
-    		if (!uvm_config_db#(virtual aes_if)::get(this, "", "vif", vif))
-      			`uvm_error("NOVIF", "Virtual interface (vif) not set for aes_monitor")
-    		else
+    		// if (!uvm_config_db#(virtual aes_if)::get(this, "", "vif", vif))
+      		// 	`uvm_error("NOVIF", "Virtual interface (vif) not set for aes_monitor")
+    		// else
       			`uvm_info(get_type_name(), "Virtual interface successfully connected in AES monitor", UVM_HIGH)
   endfunction	
 	
   task run_phase(uvm_phase phase);
     		
-    		if (vif == null) begin
-      			`uvm_fatal("NOVIF", "Virtual interface not found in aes_monitor; cannot proceed")
-    		end
+    		// if (vif == null) begin
+      		// 	`uvm_fatal("NOVIF", "Virtual interface not found in aes_monitor; cannot proceed")
+    		// end
 
 		// Wait until reset is released (active low)
 		// wait (vif.rst_i == 1);

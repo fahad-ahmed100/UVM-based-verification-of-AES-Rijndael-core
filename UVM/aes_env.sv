@@ -13,4 +13,7 @@ class aes_env extends uvm_env;
 
     endfunction
 
+    function void start_of_simulation_phase(uvm_phase phase);
+        `uvm_info(get_type_name(), "Running Simulation AES_ENV", UVM_HIGH)
+    endfunction
 endclass //aes_env extends uvm_env
